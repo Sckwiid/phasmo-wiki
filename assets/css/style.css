@@ -1,0 +1,475 @@
+:root {
+  --bg: #090a0c;
+  --bg-alt: #11131a;
+  --surface: #171a22;
+  --surface-2: #1f2330;
+  --text: #f2f5fb;
+  --muted: #b7bdd0;
+  --border: #2f3444;
+  --accent: #e06f63;
+  --accent-2: #8cd9cb;
+  --danger: #ef7676;
+  --success: #7ed2a8;
+  --warning: #edc57b;
+  --radius: 14px;
+  --shadow: 0 14px 28px rgba(0, 0, 0, 0.32);
+  --max: 1160px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: "Work Sans", "Segoe UI", sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(circle at 18% -5%, rgba(224, 111, 99, 0.2), transparent 40%),
+    radial-gradient(circle at 100% 0, rgba(140, 217, 203, 0.16), transparent 38%),
+    linear-gradient(180deg, #08090b 0%, #0d0f14 52%, #08090b 100%);
+  min-height: 100vh;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.03) 0.8px, transparent 0.8px);
+  background-size: 3px 3px;
+  pointer-events: none;
+  opacity: 0.18;
+  z-index: -1;
+}
+
+a {
+  color: var(--accent-2);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+.container {
+  width: min(var(--max), 92vw);
+  margin: 0 auto;
+}
+
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: -999px;
+}
+
+.skip-link:focus {
+  left: 10px;
+  top: 10px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 12px;
+  z-index: 1000;
+}
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(12px);
+  background: rgba(8, 9, 12, 0.82);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.nav-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 72px;
+}
+
+.brand {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  color: var(--text);
+}
+
+.brand-title {
+  font-family: "Cinzel", Georgia, serif;
+  letter-spacing: 0.05em;
+  font-size: 1.1rem;
+  margin: 0;
+}
+
+.brand-sub {
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.main-nav {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.main-nav a {
+  color: var(--text);
+  opacity: 0.9;
+  font-size: 0.95rem;
+  padding: 8px 10px;
+  border-radius: 8px;
+}
+
+.main-nav a:hover,
+.main-nav a[aria-current="page"] {
+  background: rgba(255, 255, 255, 0.08);
+  text-decoration: none;
+}
+
+.page {
+  padding: 36px 0 80px;
+}
+
+.hero {
+  padding: 44px 0 26px;
+}
+
+.hero h1 {
+  font-family: "Cinzel", Georgia, serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.1;
+  margin: 0 0 14px;
+}
+
+.hero p {
+  color: var(--muted);
+  line-height: 1.6;
+  max-width: 76ch;
+}
+
+.hero-actions {
+  margin-top: 24px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  font-weight: 600;
+  padding: 10px 14px;
+  color: var(--text);
+  background: var(--surface-2);
+}
+
+.button:hover {
+  text-decoration: none;
+  transform: translateY(-1px);
+}
+
+.button-primary {
+  background: linear-gradient(110deg, #c64f45, #e07365 58%, #d56f61);
+  color: #fff;
+  box-shadow: 0 10px 18px rgba(198, 79, 69, 0.28);
+}
+
+.button-ghost {
+  border-color: var(--border);
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 999px;
+  padding: 5px 10px;
+  font-size: 0.83rem;
+  color: var(--muted);
+}
+
+.kpi-grid,
+.grid {
+  display: grid;
+  gap: 14px;
+}
+
+.kpi-grid {
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  margin: 24px 0 8px;
+}
+
+.grid-2 {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.grid-3 {
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.card {
+  border: 1px solid var(--border);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
+  border-radius: var(--radius);
+  padding: 16px;
+  box-shadow: var(--shadow);
+}
+
+.card h2,
+.card h3 {
+  margin-top: 0;
+}
+
+.card p,
+.card li {
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.section-title {
+  font-family: "Cinzel", Georgia, serif;
+  margin: 26px 0 12px;
+  font-size: 1.5rem;
+}
+
+.subtitle {
+  color: var(--muted);
+  margin-top: -4px;
+}
+
+.table-wrap {
+  overflow: auto;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  margin: 14px 0 20px;
+  background: #0d1118;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  min-width: 640px;
+}
+
+thead th {
+  text-align: left;
+  font-weight: 700;
+  font-size: 0.89rem;
+  letter-spacing: 0.02em;
+  color: var(--text);
+  background: #1a2030;
+}
+
+th,
+td {
+  border-bottom: 1px solid var(--border);
+  padding: 11px 12px;
+  vertical-align: top;
+  font-size: 0.93rem;
+}
+
+td {
+  color: var(--muted);
+}
+
+tbody tr:hover {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.filters {
+  display: grid;
+  gap: 10px;
+  margin: 16px 0 20px;
+}
+
+.filters-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.pill {
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 999px;
+  color: var(--text);
+  padding: 8px 11px;
+  cursor: pointer;
+  font-size: 0.86rem;
+}
+
+.pill.active {
+  border-color: rgba(224, 111, 99, 0.7);
+  background: rgba(224, 111, 99, 0.16);
+}
+
+.pill-clear {
+  border-color: rgba(140, 217, 203, 0.6);
+}
+
+input[type="search"] {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 10px 12px;
+  color: var(--text);
+  font-size: 0.95rem;
+}
+
+input[type="search"]:focus {
+  outline: 2px solid rgba(140, 217, 203, 0.4);
+  outline-offset: 2px;
+}
+
+.ghost-grid {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.ghost-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.ghost-title {
+  font-size: 1.12rem;
+  margin: 0;
+}
+
+.evidence-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 10px 0;
+}
+
+.evidence-badges span {
+  border-radius: 999px;
+  padding: 4px 8px;
+  font-size: 0.8rem;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.data-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px;
+}
+
+.data-label {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.tip {
+  border-left: 3px solid var(--accent);
+  padding: 10px 12px;
+  background: rgba(224, 111, 99, 0.1);
+  color: var(--text);
+  border-radius: 8px;
+  margin: 10px 0;
+}
+
+.notice {
+  border-left: 3px solid var(--accent-2);
+  padding: 10px 12px;
+  background: rgba(140, 217, 203, 0.08);
+  color: var(--text);
+  border-radius: 8px;
+  margin: 10px 0;
+}
+
+.warning {
+  border-left: 3px solid var(--warning);
+  padding: 10px 12px;
+  background: rgba(237, 197, 123, 0.1);
+  color: var(--text);
+  border-radius: 8px;
+  margin: 10px 0;
+}
+
+.breadcrumb {
+  margin: 4px 0 18px;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.breadcrumb a {
+  color: var(--muted);
+}
+
+.page-footer {
+  border-top: 1px solid var(--border);
+  padding: 24px 0 42px;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.footer-grid {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.list-clean {
+  margin: 0;
+  padding-left: 18px;
+}
+
+.list-clean li {
+  margin-bottom: 6px;
+}
+
+.accent {
+  color: var(--accent-2);
+}
+
+.hidden {
+  display: none !important;
+}
+
+@media (max-width: 840px) {
+  .nav-wrap {
+    min-height: 64px;
+    align-items: flex-start;
+    padding: 10px 0;
+    flex-direction: column;
+  }
+
+  .main-nav {
+    width: 100%;
+    overflow-x: auto;
+    white-space: nowrap;
+    padding-bottom: 4px;
+  }
+
+  .hero {
+    padding-top: 30px;
+  }
+
+  table {
+    min-width: 560px;
+  }
+}

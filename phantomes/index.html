@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fantomes Phasmophobia | 27 entites, preuves, forces et tests</title>
+  <meta name="description" content="Page fantomes du wiki Phasmophobia FR: filtre par preuves, tableau de combinaisons, points forts/faibles et tests terrain pour 27 entites.">
+  <meta name="keywords" content="fantomes phasmophobia, preuves fantomes, banshee, deogen, moroi, mimic, wiki phasmophobia fr">
+  <meta name="robots" content="index,follow">
+  <meta name="theme-color" content="#090a0c">
+  <link rel="canonical" href="https://julien.github.io/phasmo-wiki/phantomes/">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Fantomes Phasmophobia - Tableau complet FR">
+  <meta property="og:description" content="Filtre evidence + synthese force/faiblesse + tests terrain pour chaque fantome.">
+  <meta property="og:url" content="https://julien.github.io/phasmo-wiki/phantomes/">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&amp;family=Work+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Fantomes Phasmophobia",
+    "url": "https://julien.github.io/phasmo-wiki/phantomes/",
+    "inLanguage": "fr",
+    "description": "Liste complete des entites avec preuves et tests terrain.",
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://julien.github.io/phasmo-wiki/"},
+        {"@type": "ListItem", "position": 2, "name": "Fantomes", "item": "https://julien.github.io/phasmo-wiki/phantomes/"}
+      ]
+    }
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Aller au contenu</a>
+
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="../" aria-label="Accueil Wiki Phasmophobia FR">
+        <p class="brand-title">Wiki Phasmophobia FR</p>
+        <span class="brand-sub">Guide avance</span>
+      </a>
+      <nav class="main-nav" aria-label="Navigation principale">
+        <a href="../">Accueil</a>
+        <a aria-current="page" href="./">Fantomes</a>
+        <a href="../preuves/">Preuves</a>
+        <a href="../equipements/">Equipements</a>
+        <a href="../cartes/">Cartes</a>
+        <a href="../mecaniques/">Mecaniques</a>
+        <a href="../guide-avance/">Guide avance</a>
+        <a href="../a-propos/">A propos</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content" class="page container">
+    <p class="breadcrumb"><a href="../">Accueil</a> / Fantomes</p>
+
+    <section class="hero">
+      <span class="badge">27 entites • 3 preuves par fantome</span>
+      <h1>Tableau complet des fantomes</h1>
+      <p>
+        Cette page croise les preuves officielles, les comportements principaux et les contre-tests terrain.
+        Utilise les filtres pour reduire la liste en direct, puis valide avec un test exclusif.
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>Filtrer les entites</h2>
+      <div class="filters">
+        <label for="ghost-search">Recherche par nom ou mecanique</label>
+        <input id="ghost-search" type="search" placeholder="Ex: Deogen, ligne de vue, encens, disjoncteur..." autocomplete="off">
+        <div id="evidence-filter" class="filters-row" aria-label="Filtres par preuve"></div>
+      </div>
+      <p id="ghost-count" class="badge">0 fantome</p>
+    </section>
+
+    <section>
+      <h2 class="section-title">Resultats</h2>
+      <div id="ghost-results" class="ghost-grid" aria-live="polite"></div>
+    </section>
+
+    <section>
+      <h2 class="section-title">Combinaisons de preuves</h2>
+      <p class="subtitle">Tableau de reference rapide pour verification finale dans le journal.</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Entite</th>
+              <th>Preuve 1</th>
+              <th>Preuve 2</th>
+              <th>Preuve 3</th>
+            </tr>
+          </thead>
+          <tbody id="combo-table-body"></tbody>
+        </table>
+      </div>
+      <p class="warning">
+        Le Mimic peut afficher des orbes secondaires trompeurs. Croise toujours preuves + comportement en chasse.
+      </p>
+    </section>
+  </main>
+
+  <footer class="page-footer">
+    <div class="container footer-grid">
+      <div>
+        <strong>Page Fantomes</strong>
+        <p>Filtre dynamique + synthese terrain.</p>
+      </div>
+      <div>
+        <strong>Complement utile</strong>
+        <p><a href="../mecaniques/">Mecaniques de chasse et sanite</a></p>
+      </div>
+      <div>
+        <p>© <span data-year></span> - Wiki Phasmophobia FR</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../assets/js/data.js"></script>
+  <script src="../assets/js/site.js"></script>
+  <script src="../assets/js/ghosts.js"></script>
+</body>
+</html>

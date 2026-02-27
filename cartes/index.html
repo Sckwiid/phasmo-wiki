@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cartes Phasmophobia | Tailles, limites de lumiere et segmentation</title>
+  <meta name="description" content="Toutes les cartes Phasmophobia classees par taille, avec limites de lumiere, zones d'enquete et regles de segmentation.">
+  <meta name="keywords" content="cartes phasmophobia, tanglewood, edgefield, sunny meadows, prison, map phasmophobia">
+  <meta name="robots" content="index,follow">
+  <meta name="theme-color" content="#090a0c">
+  <link rel="canonical" href="https://julien.github.io/phasmo-wiki/cartes/">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Cartes Phasmophobia - Guide FR">
+  <meta property="og:description" content="Classement des cartes, limites de lumiere et segmentation des pieces.">
+  <meta property="og:url" content="https://julien.github.io/phasmo-wiki/cartes/">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&amp;family=Work+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Aller au contenu</a>
+
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="../" aria-label="Accueil Wiki Phasmophobia FR">
+        <p class="brand-title">Wiki Phasmophobia FR</p>
+        <span class="brand-sub">Guide avance</span>
+      </a>
+      <nav class="main-nav" aria-label="Navigation principale">
+        <a href="../">Accueil</a>
+        <a href="../phantomes/">Fantomes</a>
+        <a href="../preuves/">Preuves</a>
+        <a href="../equipements/">Equipements</a>
+        <a aria-current="page" href="./">Cartes</a>
+        <a href="../mecaniques/">Mecaniques</a>
+        <a href="../guide-avance/">Guide avance</a>
+        <a href="../a-propos/">A propos</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content" class="page container">
+    <p class="breadcrumb"><a href="../">Accueil</a> / Cartes</p>
+
+    <section class="hero">
+      <span class="badge">14 cartes actives</span>
+      <h1>Cartes et logique de zone</h1>
+      <p>
+        Liste complete des cartes par taille avec les limites de lumiere, les zones speciales
+        d'enquete et les regles de segmentation importantes pour localiser la vraie piece hantee.
+      </p>
+    </section>
+
+    <section class="grid grid-3">
+      <article class="card">
+        <h2>Petites</h2>
+        <ul id="maps-small" class="list-clean"></ul>
+      </article>
+      <article class="card">
+        <h2>Moyennes</h2>
+        <ul id="maps-medium" class="list-clean"></ul>
+      </article>
+      <article class="card">
+        <h2>Grandes</h2>
+        <ul id="maps-large" class="list-clean"></ul>
+      </article>
+    </section>
+
+    <section class="card">
+      <h2>Cartes retirees</h2>
+      <ul id="maps-removed" class="list-clean"></ul>
+    </section>
+
+    <section>
+      <h2 class="section-title">Limites de lumiere par taille</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Taille</th>
+              <th>Nombre max d'eclairages principaux allumes</th>
+            </tr>
+          </thead>
+          <tbody id="light-limits-body"></tbody>
+        </table>
+      </div>
+      <p class="tip">Depasser cette limite peut couper le disjoncteur et accelerer la perte de sanite globale.</p>
+    </section>
+
+    <section class="grid grid-2">
+      <article class="card">
+        <h2>Zones d'enquete speciales</h2>
+        <ul id="maps-zones" class="list-clean"></ul>
+      </article>
+      <article class="card">
+        <h2>Segmentation des pieces</h2>
+        <ul id="maps-segmentation" class="list-clean"></ul>
+      </article>
+    </section>
+
+    <section class="card">
+      <h2>Plan de recherche recommande</h2>
+      <ul class="list-clean">
+        <li>Scanner d'abord les zones froides avec thermometre, puis confirmer par interactions EMF.</li>
+        <li>Sur grandes cartes, isoler un couloir ou bloc de pieces avant d'empiler les preuves.</li>
+        <li>Ne pas supposer qu'une "grande salle" visible est une seule piece logique.</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="page-footer">
+    <div class="container footer-grid">
+      <div>
+        <strong>Page Cartes</strong>
+        <p>Repere spatial pour localiser vite et proprement.</p>
+      </div>
+      <div>
+        <strong>Pages liees</strong>
+        <p><a href="../mecaniques/">Mecaniques</a> · <a href="../phantomes/">Fantomes</a></p>
+      </div>
+      <div>
+        <p>© <span data-year></span> - Wiki Phasmophobia FR</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../assets/js/data.js"></script>
+  <script src="../assets/js/site.js"></script>
+  <script src="../assets/js/maps.js"></script>
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>A propos | Methodologie et sources du Wiki Phasmophobia FR</title>
+  <meta name="description" content="Methodologie de consolidation, sources locales utilisees et choix SEO/techniques pour ce wiki Phasmophobia en francais.">
+  <meta name="keywords" content="a propos wiki phasmophobia, sources phasmophobia, methodologie wiki">
+  <meta name="robots" content="index,follow">
+  <meta name="theme-color" content="#090a0c">
+  <link rel="canonical" href="https://julien.github.io/phasmo-wiki/a-propos/">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="A propos du Wiki Phasmophobia FR">
+  <meta property="og:description" content="Sources, methodologie et architecture technique du site.">
+  <meta property="og:url" content="https://julien.github.io/phasmo-wiki/a-propos/">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&amp;family=Work+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Aller au contenu</a>
+
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="../" aria-label="Accueil Wiki Phasmophobia FR">
+        <p class="brand-title">Wiki Phasmophobia FR</p>
+        <span class="brand-sub">Guide avance</span>
+      </a>
+      <nav class="main-nav" aria-label="Navigation principale">
+        <a href="../">Accueil</a>
+        <a href="../phantomes/">Fantomes</a>
+        <a href="../preuves/">Preuves</a>
+        <a href="../equipements/">Equipements</a>
+        <a href="../cartes/">Cartes</a>
+        <a href="../mecaniques/">Mecaniques</a>
+        <a href="../guide-avance/">Guide avance</a>
+        <a aria-current="page" href="./">A propos</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content" class="page container">
+    <p class="breadcrumb"><a href="../">Accueil</a> / A propos</p>
+
+    <section class="hero">
+      <span class="badge">Transparence des donnees</span>
+      <h1>Methodologie de construction du wiki</h1>
+      <p>
+        Le contenu de ce site est construit a partir des fichiers HTML locaux fournis,
+        puis reformule et structure en pages thematiques pour la recherche SEO et l'usage en mission.
+      </p>
+    </section>
+
+    <section class="grid grid-2">
+      <article class="card">
+        <h2>Comment les donnees sont croisees</h2>
+        <ul class="list-clean">
+          <li>Extraction des tableaux entites/preuves et equipements.</li>
+          <li>Recoupement avec mecaniques de sanite, cartes et comportements.</li>
+          <li>Normalisation dans une base JS unique exploitee par toutes les pages.</li>
+          <li>Reformulation en francais pour eviter le copier-coller brut.</li>
+        </ul>
+      </article>
+      <article class="card">
+        <h2>Contraintes techniques</h2>
+        <ul class="list-clean">
+          <li>Site statique pur (HTML/CSS/JS), compatible GitHub Pages.</li>
+          <li>URLs propres via dossiers (`/page/`) pour un meilleur referencement.</li>
+          <li>Sitemap + robots + maillage interne + metadonnees par page.</li>
+          <li>Design sombre minimaliste, lisible sur desktop et mobile.</li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="card">
+      <h2>Fichiers source utilises (<span id="source-count">0</span>)</h2>
+      <ul id="source-files" class="list-clean"></ul>
+    </section>
+
+    <section class="card">
+      <h2>Note importante</h2>
+      <p>
+        Ce wiki est un projet communautaire non officiel. Pour les patch notes et changements live,
+        verifier les canaux officiels du jeu en complement.
+      </p>
+    </section>
+  </main>
+
+  <footer class="page-footer">
+    <div class="container footer-grid">
+      <div>
+        <strong>Page A propos</strong>
+        <p>Sources et choix editoriaux.</p>
+      </div>
+      <div>
+        <strong>Retour navigation</strong>
+        <p><a href="../">Accueil</a> · <a href="../phantomes/">Fantomes</a></p>
+      </div>
+      <div>
+        <p>© <span data-year></span> - Wiki Phasmophobia FR</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../assets/js/data.js"></script>
+  <script src="../assets/js/site.js"></script>
+  <script src="../assets/js/about.js"></script>
+</body>
+</html>
