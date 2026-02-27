@@ -21,6 +21,15 @@
     }
   }
 
+  function slugify(value) {
+    return String(value || "")
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/^-+|-+$/g, "");
+  }
+
   function initKpis() {
     const meta = data.metadata || {};
     document.querySelectorAll("[data-kpi]").forEach((node) => {
@@ -141,7 +150,8 @@
   window.PHASMO_UTIL = {
     escapeHtml,
     formatMoney,
-    evidenceClass
+    evidenceClass,
+    slugify
   };
 
   initKpis();

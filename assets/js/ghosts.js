@@ -14,6 +14,10 @@
   const countLabel = document.querySelector("#ghost-count");
   const comboTableBody = document.querySelector("#combo-table-body");
 
+  function ghostPath(name) {
+    return `${util.slugify(name)}/`;
+  }
+
   function statFor(ghostName) {
     return (data.ghostStats && data.ghostStats[ghostName]) || {
       hunt: "Variable",
@@ -123,17 +127,25 @@
             <div class="ghost-card-inner">
               <div class="ghost-main">
                 <div class="ghost-meta-top">
-                  <h3 class="ghost-title">${util.escapeHtml(ghost.name)}</h3>
+                  <h3 class="ghost-title">
+                    <a href="${ghostPath(ghost.name)}">${util.escapeHtml(ghost.name)}</a>
+                  </h3>
                   <span class="badge">3 preuves</span>
                 </div>
                 <div class="evidence-badges">${evidenceTags}</div>
                 <div class="nerd-row">
                   <div class="stat-pill">
-                    <span class="stat-label"><span class="stat-icon">🧠</span>Seuil chasse</span>
+                    <span class="stat-label">
+                      <span class="stat-icon">🧠</span>Seuil chasse
+                      <span class="info-tip" tabindex="0" data-tip="Pourcentage de sanite a partir duquel le fantome peut commencer une chasse. Certaines capacites modifient ce seuil.">?</span>
+                    </span>
                     <span class="stat-value">${util.escapeHtml(stats.hunt)}</span>
                   </div>
                   <div class="stat-pill">
-                    <span class="stat-label"><span class="stat-icon">👣</span>Vitesse</span>
+                    <span class="stat-label">
+                      <span class="stat-icon">👣</span>Vitesse
+                      <span class="info-tip" tabindex="0" data-tip="Vitesse de deplacement du fantome pendant la chasse. Elle peut changer selon la ligne de vue, la temperature ou des capacites specifiques.">?</span>
+                    </span>
                     <span class="stat-value">${util.escapeHtml(stats.speed)}</span>
                   </div>
                   <div class="stat-pill">
@@ -144,11 +156,14 @@
                     <span class="stat-value">${util.escapeHtml(stats.los)}</span>
                   </div>
                   <div class="stat-pill">
-                    <span class="stat-label"><span class="stat-icon">📡</span>Interference</span>
+                    <span class="stat-label">
+                      <span class="stat-icon">📡</span>Interference
+                      <span class="info-tip" tabindex="0" data-tip="Distance d'interference electronique pendant event/chasse: lampes qui clignotent, radio perturbee et equipements affectes.">?</span>
+                    </span>
                     <span class="stat-value">${util.escapeHtml(stats.interfere)}</span>
                   </div>
                 </div>
-                <p class="ghost-desc"><strong>Stats nerd:</strong> ${util.escapeHtml(stats.nerd)}</p>
+                <p class="ghost-desc"><strong>Pro tip:</strong> ${util.escapeHtml(stats.nerd)}</p>
               </div>
               <div class="ghost-tells">
                 <h4>Tells / comportement</h4>
@@ -174,7 +189,7 @@
       .map(
         (ghost) => `
           <tr>
-            <th scope="row">${util.escapeHtml(ghost.name)}</th>
+            <th scope="row"><a href="${ghostPath(ghost.name)}">${util.escapeHtml(ghost.name)}</a></th>
             <td><span class="evidence-chip ${util.evidenceClass(ghost.evidences[0])}">${util.escapeHtml(ghost.evidences[0])}</span></td>
             <td><span class="evidence-chip ${util.evidenceClass(ghost.evidences[1])}">${util.escapeHtml(ghost.evidences[1])}</span></td>
             <td><span class="evidence-chip ${util.evidenceClass(ghost.evidences[2])}">${util.escapeHtml(ghost.evidences[2])}</span></td>

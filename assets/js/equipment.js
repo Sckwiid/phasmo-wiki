@@ -8,10 +8,14 @@
   const upgradeBody = document.querySelector("#upgrade-body");
   const truckList = document.querySelector("#truck-list");
 
+  function itemPath(name) {
+    return `items/${util.slugify(name)}/`;
+  }
+
   function rowFromItem(item) {
     return `
       <tr>
-        <th scope="row">${util.escapeHtml(item.name)}</th>
+        <th scope="row"><a href="${itemPath(item.name)}">${util.escapeHtml(item.name)}</a></th>
         <td>${util.formatMoney(item.price)}</td>
         <td>${util.escapeHtml(item.max)}</td>
         <td>${util.escapeHtml(item.role)}</td>
@@ -35,7 +39,7 @@
       .map(
         (item) => `
           <tr>
-            <th scope="row">${util.escapeHtml(item.name)}</th>
+            <th scope="row"><a href="${itemPath(item.name)}">${util.escapeHtml(item.name)}</a></th>
             <td>${util.formatMoney(item.cost)}</td>
             <td>${item.defaultItem ? "Oui" : "Non"}</td>
             <td>${util.escapeHtml(item.max)}</td>
@@ -51,7 +55,7 @@
   function renderTruck() {
     if (!truckList) return;
     truckList.innerHTML = data.equipment.truck
-      .map((item) => `<li>${util.escapeHtml(item)}</li>`)
+      .map((item) => `<li><a href="${itemPath(item)}">${util.escapeHtml(item)}</a></li>`)
       .join("");
   }
 

@@ -21,7 +21,7 @@
       .map(
         (ghost) => `
           <tr>
-            <th scope="row">${util.escapeHtml(ghost.name)}</th>
+            <th scope="row"><a href="../phantomes/${util.slugify(ghost.name)}/">${util.escapeHtml(ghost.name)}</a></th>
             <td>${util.escapeHtml(ghost.tests.join(" | "))}</td>
           </tr>
         `
