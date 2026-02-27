@@ -129,19 +129,22 @@
                 <div class="evidence-badges">${evidenceTags}</div>
                 <div class="nerd-row">
                   <div class="stat-pill">
-                    <span class="stat-label">Seuil chasse</span>
+                    <span class="stat-label"><span class="stat-icon">🧠</span>Seuil chasse</span>
                     <span class="stat-value">${util.escapeHtml(stats.hunt)}</span>
                   </div>
                   <div class="stat-pill">
-                    <span class="stat-label">Vitesse</span>
+                    <span class="stat-label"><span class="stat-icon">👣</span>Vitesse</span>
                     <span class="stat-value">${util.escapeHtml(stats.speed)}</span>
                   </div>
                   <div class="stat-pill">
-                    <span class="stat-label">LOS</span>
+                    <span class="stat-label">
+                      <span class="stat-icon">👁</span>LOS
+                      <span class="info-tip" tabindex="0" data-tip="LOS = Line of Sight. Quand le fantome te voit en continu pendant la chasse, sa vitesse peut augmenter selon son type.">?</span>
+                    </span>
                     <span class="stat-value">${util.escapeHtml(stats.los)}</span>
                   </div>
                   <div class="stat-pill">
-                    <span class="stat-label">Interference</span>
+                    <span class="stat-label"><span class="stat-icon">📡</span>Interference</span>
                     <span class="stat-value">${util.escapeHtml(stats.interfere)}</span>
                   </div>
                 </div>
