@@ -43,6 +43,22 @@ function evidenceClass(name) {
   return "";
 }
 
+function extractUpgradePrice(text) {
+  const value = String(text || "");
+  const match = value.match(/\+\s*([0-9 ]+)\$/);
+  if (!match) return "Inclus";
+  return `${match[1].replace(/\s+/g, " ").trim()} $`;
+}
+
+function tierDescription(data, itemName, tierKey) {
+  const notes = data.equipmentTierNotes || {};
+  const itemNotes = notes[itemName];
+  if (!itemNotes || !itemNotes[tierKey]) {
+    return "Description d'amelioration non detaillee dans la source locale.";
+  }
+  return itemNotes[tierKey];
+}
+
 function ensureDir(dirPath) {
   fs.mkdirSync(dirPath, { recursive: true });
 }
@@ -381,16 +397,30 @@ function buildItemPages(data) {
         <table>
           <thead>
             <tr>
-              <th>Tier I</th>
-              <th>Tier II</th>
-              <th>Tier III</th>
+              <th>Tier</th>
+              <th>Deblocage</th>
+              <th>Prix amelio</th>
+              <th>Description</th>
             </tr>
           </thead>
           <tbody>
             <tr>
+              <th scope="row">Tier I</th>
               <td>${escapeHtml(item.upgrade.tier1)}</td>
+              <td>Inclus (tier de base)</td>
+              <td>${escapeHtml(tierDescription(data, item.name, "tier1"))}</td>
+            </tr>
+            <tr>
+              <th scope="row">Tier II</th>
               <td>${escapeHtml(item.upgrade.tier2)}</td>
+              <td>${escapeHtml(extractUpgradePrice(item.upgrade.tier2))}</td>
+              <td>${escapeHtml(tierDescription(data, item.name, "tier2"))}</td>
+            </tr>
+            <tr>
+              <th scope="row">Tier III</th>
               <td>${escapeHtml(item.upgrade.tier3)}</td>
+              <td>${escapeHtml(extractUpgradePrice(item.upgrade.tier3))}</td>
+              <td>${escapeHtml(tierDescription(data, item.name, "tier3"))}</td>
             </tr>
           </tbody>
         </table>

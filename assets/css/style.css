@@ -492,7 +492,8 @@ input[type="search"]:focus {
   border-radius: 16px;
   background: linear-gradient(148deg, rgba(65, 53, 97, 0.92), rgba(44, 37, 72, 0.92));
   box-shadow: 0 12px 26px rgba(14, 10, 28, 0.45);
-  overflow: hidden;
+  overflow: visible;
+  position: relative;
 }
 
 .ghost-card-inner {
@@ -679,7 +680,7 @@ input[type="search"]:focus {
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.14s ease;
-  z-index: 30;
+  z-index: 90;
 }
 
 .info-tip:hover::after,
@@ -721,6 +722,17 @@ input[type="search"]:focus {
 .ghost-tests strong {
   font-size: 0.86rem;
   color: #e8edff;
+}
+
+.tier-cell {
+  display: grid;
+  gap: 4px;
+  min-width: 220px;
+  line-height: 1.35;
+}
+
+.tier-cell strong {
+  color: #ecf1ff;
 }
 
 th a,

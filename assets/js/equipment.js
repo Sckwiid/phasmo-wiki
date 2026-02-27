@@ -7,9 +7,40 @@
   const optionalBody = document.querySelector("#optional-body");
   const upgradeBody = document.querySelector("#upgrade-body");
   const truckList = document.querySelector("#truck-list");
+  const tierNotes = data.equipmentTierNotes || {};
 
   function itemPath(name) {
     return `items/${util.slugify(name)}/`;
+  }
+
+  function extractUpgradePrice(text) {
+    const value = String(text || "");
+    const match = value.match(/\+\s*([0-9 ]+)\$/);
+    if (!match) return "Inclus";
+    const cleaned = match[1].replace(/\s+/g, " ").trim();
+    return `${cleaned} $`;
+  }
+
+  function tierDescription(itemName, tierKey) {
+    const itemNotes = tierNotes[itemName];
+    if (!itemNotes || !itemNotes[tierKey]) {
+      return "Description d'amelioration non detaillee dans la source locale.";
+    }
+    return itemNotes[tierKey];
+  }
+
+  function tierBlock(item, tierKey) {
+    const unlock = item[tierKey];
+    const price = tierKey === "tier1" ? "Inclus (tier de base)" : extractUpgradePrice(unlock);
+    const description = tierDescription(item.name, tierKey);
+
+    return `
+      <div class="tier-cell">
+        <div><strong>Deblocage:</strong> ${util.escapeHtml(unlock)}</div>
+        <div><strong>Prix amelio:</strong> ${util.escapeHtml(price)}</div>
+        <div><strong>Description:</strong> ${util.escapeHtml(description)}</div>
+      </div>
+    `;
   }
 
   function rowFromItem(item) {
@@ -43,9 +74,9 @@
             <td>${util.formatMoney(item.cost)}</td>
             <td>${item.defaultItem ? "Oui" : "Non"}</td>
             <td>${util.escapeHtml(item.max)}</td>
-            <td>${util.escapeHtml(item.tier1)}</td>
-            <td>${util.escapeHtml(item.tier2)}</td>
-            <td>${util.escapeHtml(item.tier3)}</td>
+            <td>${tierBlock(item, "tier1")}</td>
+            <td>${tierBlock(item, "tier2")}</td>
+            <td>${tierBlock(item, "tier3")}</td>
           </tr>
         `
       )

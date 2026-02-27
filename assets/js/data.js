@@ -331,6 +331,113 @@ window.PHASMO_DATA = {
       { name: "Camera video", cost: 50, max: 4, defaultItem: true, tier1: "Objet de base", tier2: "Niveau 27 + 3 000$", tier3: "Niveau 49 + 3 000$" }
     ]
   },
+  equipmentTierNotes: {
+    "Projecteur D.O.T.S.": {
+      tier1: "Faisceau portable etroit (env. 5 m). Scanner activement la piece a la main.",
+      tier2: "Mode zone a poser au sol (env. 2.5 m). Croiser deux DOTS pour couvrir plus large.",
+      tier3: "Balayage motorise large (env. 7 m), ideal mur/plafond pour grande couverture."
+    },
+    "Lecteur EMF": {
+      tier1: "Modele ancien peu precis, courte portee. A utiliser juste apres interaction.",
+      tier2: "Lecture LED plus claire et plus stable, meilleure lisibilite en mission.",
+      tier3: "Affichage direction/distance et meilleure portee, tracking des interactions facilite."
+    },
+    "Lampe torche": {
+      tier1: "Luminosite faible, eclairage minimal pour debut de partie.",
+      tier2: "Luminosite moyenne plus confortable pour exploration reguliere.",
+      tier3: "Luminosite maximale, meilleure lisibilite des couloirs et grandes pieces."
+    },
+    "Livre d'ecriture": {
+      tier1: "Faible proba d'interaction, utile en double pose pour compenser.",
+      tier2: "Proba et lisibilite ameliorees, verification plus rapide de la preuve.",
+      tier3: "Portee et clarte maximales, excellent pour grandes salles."
+    },
+    "Spirit Box": {
+      tier1: "Portee et proba de reponse faibles, demander pres de l'apparition.",
+      tier2: "Meilleure portee et reponses plus claires, boucle de questions plus fiable.",
+      tier3: "Portee/proba elevees, identification vocale plus rapide et consistante."
+    },
+    "Thermometre": {
+      tier1: "Lecture lente et peu precise (mercure), surtout utile en pose statique.",
+      tier2: "Lecture plus rapide en main, bon compromis vitesse/precision.",
+      tier3: "Lecture quasi instantanee, excellent pour confirmer vite la piece."
+    },
+    "Lampe UV": {
+      tier1: "Faible puissance UV et chargement lent des empreintes.",
+      tier2: "Eclairage de zone avec meilleure reactivite UV.",
+      tier3: "Cone UV puissant, detection rapide des traces."
+    },
+    "Camera video": {
+      tier1: "Qualite image limitee, detection d'orbes plus exigeante.",
+      tier2: "Qualite video et vision nocturne ameliorees.",
+      tier3: "Qualite maximale et meilleure tenue en activite paranormale."
+    },
+    "Crucifix": {
+      tier1: "Blocage de chasse standard. Positionnement precis requis.",
+      tier2: "Zone de blocage plus confortable et meilleure fiabilite pratique.",
+      tier3: "Version la plus efficace pour securiser la piece cible."
+    },
+    "Lumiere a feu": {
+      tier1: "Source de lumiere de base pour limiter la perte de sanite.",
+      tier2: "Meilleure tenue en enquete et usage plus pratique.",
+      tier3: "Version la plus stable et visible pour couverture de zone."
+    },
+    "Head Gear": {
+      tier1: "Flux camera frontal pour observation camion.",
+      tier2: "Ajoute un eclairage frontal utile en deplacement.",
+      tier3: "Vision nocturne embarquee pour enquete mains libres."
+    },
+    "Allumeur": {
+      tier1: "Allumage de base pour bougies et encens.",
+      tier2: "Allumage plus fiable et plus pratique en stress.",
+      tier3: "Usage plus reactif pour enchainements defensifs."
+    },
+    "Encens": {
+      tier1: "Repoussement standard du fantome en phase critique.",
+      tier2: "Meilleur controle defensif en chasse et repositionnement.",
+      tier3: "Version la plus confortable pour survie et tests agressifs."
+    },
+    "Capteur de mouvement": {
+      tier1: "Detection de base sur passage joueur/fantome.",
+      tier2: "Couverture et lisibilite de detection ameliorees.",
+      tier3: "Detection la plus complete pour tracer les routes de roaming."
+    },
+    "Micro parabolique": {
+      tier1: "Detection directionnelle basique des sons paranormaux.",
+      tier2: "Meilleure lecture des sons et confort d'interpretation.",
+      tier3: "Version la plus precise pour triangulation audio."
+    },
+    "Appareil photo": {
+      tier1: "Delai entre photos long, demande un placement plus propre.",
+      tier2: "Delai reduit et confort de visee avec ecran.",
+      tier3: "Cadence photo maximale pour capturer plus facilement les interactions."
+    },
+    "Sel": {
+      tier1: "Marquage de traces de base en zone de passage.",
+      tier2: "Lecture comportementale plus pratique sur trajectoires.",
+      tier3: "Version la plus efficace pour tests de deplacement."
+    },
+    "Medicaments de sanite": {
+      tier1: "Restauration lente et longue duree (profil prudent).",
+      tier2: "Restauration plus rapide, reprise d'enquete acceleree.",
+      tier3: "Adrenaline: restauration tres rapide + boost de mobilite."
+    },
+    "Enregistreur de son": {
+      tier1: "Portee limitee, suivi visuel simple de la source.",
+      tier2: "Portee et lecture de proximite ameliorees via ecran.",
+      tier3: "Lecture direction/distance la plus efficace pour cibler le son."
+    },
+    "Capteur sonore": {
+      tier1: "Mesure audio de base d'une zone depuis le camion.",
+      tier2: "Sensibilite accrue pour mieux isoler l'activite.",
+      tier3: "Analyse sonore la plus fine pour verifier la piece active."
+    },
+    "Trepied": {
+      tier1: "Stabilite faible, camera plus sensible aux renversements.",
+      tier2: "Stabilite amelioree + rotation motorisee depuis le camion.",
+      tier3: "Stabilite maximale + rotation motorisee renforcee."
+    }
+  },
   maps: {
     small: [
       "6 Tanglewood Drive",
