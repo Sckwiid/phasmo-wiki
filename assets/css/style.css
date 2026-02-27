@@ -954,6 +954,38 @@ li a:hover {
   padding: 14px;
 }
 
+.image-slot-filled {
+  border-style: solid;
+  display: block;
+  padding: 10px;
+}
+
+.image-slot-filled .image-figure {
+  margin: 0;
+  border: 1px solid rgba(var(--theme-a-rgb), 0.35);
+  border-radius: 10px;
+  overflow: hidden;
+  background: rgba(8, 9, 14, 0.85);
+}
+
+.image-slot-filled .image-figure img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+
+.image-slot-filled:not(.image-slot-multi) .image-figure {
+  min-height: 236px;
+}
+
+.image-slot-multi {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 10px;
+  min-height: 0;
+}
+
 .image-credit {
   margin: 8px 0 0;
   font-size: 0.8rem;
