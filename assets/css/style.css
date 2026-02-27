@@ -82,6 +82,11 @@ body.theme-guide {
   --theme-b-rgb: 145, 169, 255;
 }
 
+body.theme-cursed {
+  --theme-a-rgb: 192, 86, 74;
+  --theme-b-rgb: 235, 170, 92;
+}
+
 body::before {
   content: "";
   position: fixed;
@@ -677,15 +682,34 @@ input[type="search"]:focus {
   text-transform: none;
   letter-spacing: 0.01em;
   line-height: 1.35;
+  word-break: normal;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.14s ease;
-  z-index: 90;
+  z-index: 220;
 }
 
 .info-tip:hover::after,
 .info-tip:focus-visible::after {
   opacity: 1;
+}
+
+.info-tip.tip-right::after {
+  left: 0;
+  right: auto;
+  transform: none;
+}
+
+.info-tip.tip-left::after {
+  left: auto;
+  right: 0;
+  transform: none;
+}
+
+.info-tip.tip-center::after {
+  left: 50%;
+  right: auto;
+  transform: translateX(-50%);
 }
 
 .ghost-desc {
@@ -816,7 +840,7 @@ li a:hover {
 
 .hub-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 16px;
   margin-top: 20px;
 }
@@ -870,6 +894,7 @@ li a:hover {
 .hub-maps { --hub-rgb: 56, 148, 101; }
 .hub-mechanics { --hub-rgb: 161, 76, 109; }
 .hub-guide { --hub-rgb: 79, 113, 196; }
+.hub-cursed { --hub-rgb: 186, 90, 62; }
 
 .detail-page {
   display: grid;
@@ -927,6 +952,30 @@ li a:hover {
   text-align: center;
   color: #d9e1fa;
   padding: 14px;
+}
+
+.image-credit {
+  margin: 8px 0 0;
+  font-size: 0.8rem;
+  color: #c5cce4;
+}
+
+.image-credit a {
+  color: #9be7df;
+}
+
+.cursed-title {
+  margin: 0 0 10px;
+}
+
+.cursed-title a {
+  color: #f7fbff;
+  text-decoration: none;
+}
+
+.cursed-title a:hover {
+  color: #ffe1b8;
+  text-decoration: underline;
 }
 
 .detail-note {

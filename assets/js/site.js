@@ -135,6 +135,55 @@
     });
   }
 
+  function placeInfoTip(node) {
+    if (!node) return;
+    node.classList.remove("tip-left", "tip-right", "tip-center");
+
+    const rect = node.getBoundingClientRect();
+    const viewportWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+    const tooltipWidth = Math.min(280, Math.max(210, viewportWidth * 0.42));
+    const half = tooltipWidth / 2;
+    const margin = 12;
+
+    if (rect.left < half + margin) {
+      node.classList.add("tip-right");
+      return;
+    }
+
+    if (viewportWidth - rect.right < half + margin) {
+      node.classList.add("tip-left");
+      return;
+    }
+
+    node.classList.add("tip-center");
+  }
+
+  function initInfoTips() {
+    document.addEventListener(
+      "pointerenter",
+      (event) => {
+        const node = event.target.closest(".info-tip");
+        if (!node) return;
+        placeInfoTip(node);
+      },
+      true
+    );
+
+    document.addEventListener("focusin", (event) => {
+      const node = event.target.closest(".info-tip");
+      if (!node) return;
+      placeInfoTip(node);
+    });
+
+    window.addEventListener(
+      "resize",
+      () => {
+        document.querySelectorAll(".info-tip").forEach((node) => placeInfoTip(node));
+      },
+      { passive: true }
+    );
+  }
+
   function evidenceClass(name) {
     const n = (name || "").toLowerCase();
     if (n.includes("emf")) return "ev-emf";
@@ -159,4 +208,5 @@
   initCanonical();
   createAmbientBlobs();
   initAmbientCanvas();
+  initInfoTips();
 })();

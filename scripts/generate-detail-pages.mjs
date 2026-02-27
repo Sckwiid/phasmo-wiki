@@ -75,6 +75,7 @@ function nav(prefix, currentSection) {
     ["ghosts", "Fantomes", `${prefix}phantomes/`],
     ["evidence", "Preuves", `${prefix}preuves/`],
     ["gear", "Equipements", `${prefix}equipements/`],
+    ["cursed", "Objets maudits", `${prefix}objets-maudits/`],
     ["maps", "Cartes", `${prefix}cartes/`],
     ["mechanics", "Mecaniques", `${prefix}mecaniques/`],
     ["guide", "Guide avance", `${prefix}guide-avance/`]
@@ -155,7 +156,7 @@ ${JSON.stringify(schema, null, 2)}
       </div>
       <div>
         <strong>Navigation rapide</strong>
-        <p><a href="${prefix}phantomes/">Fantomes</a> · <a href="${prefix}equipements/">Equipements</a> · <a href="${prefix}cartes/">Cartes</a></p>
+        <p><a href="${prefix}phantomes/">Fantomes</a> · <a href="${prefix}equipements/">Equipements</a> · <a href="${prefix}objets-maudits/">Objets maudits</a> · <a href="${prefix}cartes/">Cartes</a></p>
       </div>
       <div>
         <p>© <span data-year></span> - Wiki Phasmophobia FR</p>
@@ -168,6 +169,10 @@ ${JSON.stringify(schema, null, 2)}
 </body>
 </html>
 `;
+}
+
+function imageSourceCredit() {
+  return '<p class="image-credit">Source image: <a href="https://www.phasmophobia-fr.com/wiki-phasmophobia-fr/" rel="noopener noreferrer">https://www.phasmophobia-fr.com/wiki-phasmophobia-fr/</a></p>';
 }
 
 function mergeItemData(data) {
@@ -283,6 +288,7 @@ function buildGhostPages(data) {
         <article class="card">
           <h2>Visuel du fantome</h2>
           <div class="image-slot">Zone image prevue pour ${escapeHtml(ghost.name)}<br>(illustration / modele en jeu)</div>
+          ${imageSourceCredit()}
           <p class="detail-note">Ajoute ici une capture en manifestation ou une image de modele pour reconnaissance rapide.</p>
         </article>
 
@@ -452,6 +458,7 @@ function buildItemPages(data) {
         <article class="card">
           <h2>Visuel de l'objet</h2>
           <div class="image-slot">Zone image prevue pour ${escapeHtml(item.name)}<br>(objet en inventaire / rendu en jeu)</div>
+          ${imageSourceCredit()}
           <p class="detail-note">Ajoute une capture de l'objet en main + pose dans la piece hantee.</p>
         </article>
 
@@ -553,6 +560,7 @@ function buildMapPages(data) {
         <article class="card">
           <h2>Plan de la carte</h2>
           <div class="image-slot">Zone image prevue pour ${escapeHtml(mapName)}<br>(plan complet / callouts de zones)</div>
+          ${imageSourceCredit()}
           <p class="detail-note">Ajoute un plan annote (spawn, caches, chemins de fuite, zones de test).</p>
         </article>
 
@@ -612,6 +620,131 @@ function buildMapPages(data) {
   });
 }
 
+function buildCursedPages(data) {
+  (data.cursedObjects || []).forEach((item) => {
+    const slug = slugify(item.name);
+
+    const usage = (item.usage || []).map((step) => `<li>${escapeHtml(step)}</li>`).join("");
+    const risks = (item.risks || []).map((risk) => `<li>${escapeHtml(risk)}</li>`).join("");
+    const tips = (item.tips || []).map((tip) => `<li>${escapeHtml(tip)}</li>`).join("");
+
+    const referenceRows = (item.referenceRows || [])
+      .map(
+        (row) => `
+          <tr>
+            <th scope="row">${escapeHtml(row.label)}</th>
+            <td>${escapeHtml(row.effect)}</td>
+            <td>${escapeHtml(row.risk)}</td>
+          </tr>
+        `
+      )
+      .join("");
+
+    const referenceTable = referenceRows
+      ? `
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Element</th>
+              <th>Effet</th>
+              <th>Risque / Cout</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${referenceRows}
+          </tbody>
+        </table>
+      </div>`
+      : '<p class="detail-note">Aucun tableau avance supplementaire dans la source locale pour cet objet.</p>';
+
+    const content = `
+    <section class="detail-page">
+      <article class="detail-head">
+        <span class="badge">Fiche objet maudit</span>
+        <h1 class="detail-title">${escapeHtml(item.name)}</h1>
+        <p class="detail-sub">${escapeHtml(item.summary || "Objet maudit utilise pour accelerer l'enquete avec un niveau de risque eleve.")}</p>
+        <div class="detail-badges">
+          <span class="badge">Difficulte: ${escapeHtml(item.difficulty || "Variable")}</span>
+          <span class="badge">Cout sanite: ${escapeHtml(item.sanityCost || "Variable")}</span>
+          <span class="badge">Risque chasse: ${escapeHtml(item.huntRisk || "Variable")}</span>
+          <span class="badge">Limite: ${escapeHtml(item.usageLimit || "Variable")}</span>
+        </div>
+      </article>
+
+      <section class="detail-grid">
+        <article class="card">
+          <h2>Visuel de l'objet maudit</h2>
+          <div class="image-slot">Zone image prevue pour ${escapeHtml(item.name)}<br>(objet maudit en jeu / vue inventaire)</div>
+          ${imageSourceCredit()}
+          <p class="detail-note">Ajoute une image claire de l'objet pose + tenue en main pour reconnaissance immediate.</p>
+        </article>
+
+        <article class="card">
+          <h2>Infos rapides</h2>
+          <ul class="list-clean">
+            <li><strong>Difficulte d'usage:</strong> ${escapeHtml(item.difficulty || "Variable")}</li>
+            <li><strong>Cout principal:</strong> ${escapeHtml(item.sanityCost || "Variable")}</li>
+            <li><strong>Risque de chasse:</strong> ${escapeHtml(item.huntRisk || "Variable")}</li>
+            <li><strong>Limite d'utilisation:</strong> ${escapeHtml(item.usageLimit || "Variable")}</li>
+          </ul>
+          <p class="detail-note">Utilise ces objets uniquement avec plan defensif actif (cache valide, sortie, encens pret).</p>
+        </article>
+      </section>
+
+      <section class="grid grid-2">
+        <article class="card">
+          <h2>Procedure d'utilisation</h2>
+          <ul class="list-clean">${usage || "<li>Procedure non detaillee dans la source locale.</li>"}</ul>
+        </article>
+
+        <article class="card">
+          <h2>Risques majeurs</h2>
+          <ul class="list-clean">${risks || "<li>Risque non detaille dans la source locale.</li>"}</ul>
+        </article>
+      </section>
+
+      <section class="grid grid-2">
+        <article class="card">
+          <h2>Reference avancee</h2>
+          ${referenceTable}
+        </article>
+
+        <article class="card">
+          <h2>Pro tips</h2>
+          <ul class="list-clean">${tips || "<li>Tip non detaille dans la source locale.</li>"}</ul>
+          <p class="detail-note">Croise toujours avec <a href="../../mecaniques/">Mecaniques</a> et <a href="../../guide-avance/">Guide avance</a> pour valider le timing.</p>
+        </article>
+      </section>
+    </section>`;
+
+    const schema = {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      headline: `${item.name} - Objet maudit Phasmophobia FR`,
+      inLanguage: "fr",
+      mainEntityOfPage: `${SITE_BASE}/objets-maudits/${slug}/`,
+      about: "Objets maudits Phasmophobia",
+      description: `${item.name}: usage, couts, risques, astuces et reference avancee en francais.`
+    };
+
+    const html = pageTemplate({
+      title: `${item.name} | Objet maudit Phasmophobia FR`,
+      description: `${item.name}: procedure, cout de sanite, risque de chasse maudite et conseils d'utilisation.`,
+      canonicalPath: `/objets-maudits/${slug}/`,
+      theme: "theme-cursed",
+      prefix: "../../",
+      currentSection: "cursed",
+      brandSub: "Fiche objet maudit",
+      breadcrumb: `<a href="../../">Accueil</a> / <a href="../">Objets maudits</a> / ${escapeHtml(item.name)}`,
+      content,
+      schema
+    });
+
+    writeFile(path.join("objets-maudits", slug, "index.html"), html);
+  });
+}
+
 function updateSitemap() {
   const pages = [];
 
@@ -656,6 +789,7 @@ function run() {
   buildGhostPages(data);
   buildItemPages(data);
   buildMapPages(data);
+  buildCursedPages(data);
   updateSitemap();
 }
 

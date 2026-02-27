@@ -4,6 +4,7 @@ window.PHASMO_DATA = {
     subtitle: "Mecaniques avancees, preuves, equipements, cartes et strategie",
     ghostCount: 27,
     evidenceCount: 7,
+    cursedCount: 7,
     mapCount: 14,
     sourceNote: "Synthese francisee et recroisee a partir des pages Fandom FR/EN, du Cheat Sheet non officiel et de la page Pro Wiki fournis localement.",
     generatedAt: "2026-02-27"
@@ -72,7 +73,7 @@ window.PHASMO_DATA = {
       evidences: ["EMF niveau 5", "Orbe fantomatique", "Spirit Box"],
       strengths: "Accelere quand un joueur bouge pres d'elle.",
       weaknesses: "Ralentit si la cible reste immobile a proximite.",
-      tests: ["Tester mouvement puis arret dans la meme ligne", "Comparer le rythme des pas en poursuite"]
+      tests: ["Tester mouvement puis arret sur une meme trajectoire en ligne droite", "Comparer le rythme des pas en poursuite"]
     },
     {
       name: "Demon",
@@ -480,6 +481,217 @@ window.PHASMO_DATA = {
       "A Prison, l'Infirmary de l'etage combine deux espaces de lits en une seule piece de logique."
     ]
   },
+  cursedObjects: [
+    {
+      name: "Planche Ouija",
+      difficulty: "Moyenne",
+      sanityCost: "5% a 50% selon la categorie de question",
+      huntRisk: "Eleve si oubli de 'Au revoir' ou sanite insuffisante",
+      usageLimit: "Peut etre brisee et devenir inutilisable",
+      summary: "Objet maudit de communication directe avec l'entite. Tres fort pour localiser et lire l'etat de partie, mais punitif si mal gere.",
+      usage: [
+        "Poser la planche en main secondaire et lancer une question vocale reconnue.",
+        "Lire la reponse ecrite et surveiller la sanite restante avant de continuer.",
+        "Terminer proprement avec 'Au revoir' (ou quitter le lieu avec la planche)."
+      ],
+      risks: [
+        "S'eloigner sans fermer la session casse la planche et lance une chasse maudite.",
+        "Question au-dessus de la sanite disponible: casse immediate + chasse maudite.",
+        "La question 'Cache-cache' declenche un decompte puis une chasse maudite."
+      ],
+      tips: [
+        "Demarrer par les questions a 5% pour limiter le risque d'explosion de sanite.",
+        "Faire les questions a 50% seulement si l'equipe est haute en sanite.",
+        "Croiser les infos Ouija avec EMF: elle peut produire EMF 5 si l'entite l'a."
+      ],
+      referenceRows: [
+        { label: "Localisation", effect: "Trouver la piece favorite", risk: "Perte de 50% (ex: 'Ou es-tu ?')" },
+        { label: "Partie", effect: "Infos macro (os, mode de reponse)", risk: "Perte de 20%" },
+        { label: "Backstory", effect: "Questions lore (age, mort, raison)", risk: "Perte de 5%" },
+        { label: "Sanite", effect: "Etat mental detaille du joueur", risk: "Perte de 5%" },
+        { label: "Jeu", effect: "Reponses de type mini-jeu (Marco/Toc toc)", risk: "Perte de 5%" },
+        { label: "Autres", effect: "Commandes diverses dont fermeture", risk: "0%, mais echec sous 5% de sanite" }
+      ]
+    },
+    {
+      name: "Cartes de tarot",
+      difficulty: "Elevee",
+      sanityCost: "Variable selon carte tiree",
+      huntRisk: "Fort (Death 10%, Hanged Man 1%)",
+      usageLimit: "10 cartes par paquet",
+      summary: "Objet maudit le plus aleatoire: excellent pour renverser une partie, mais peut aussi provoquer chasse maudite ou mort instantanee.",
+      usage: [
+        "Prendre le paquet en main et tirer une carte par activation.",
+        "Observer la couleur et l'effet immediat pour adapter la suite de la manche.",
+        "Eviter les tirages pendant chasse: toutes les cartes deviennent The Fool."
+      ],
+      risks: [
+        "Death lance instantanement une chasse maudite.",
+        "Moon met le joueur a 0% de sanite.",
+        "Hanged Man tue immediatement le joueur qui tire."
+      ],
+      tips: [
+        "Prevoir cache + encens avant les tirages en serie.",
+        "Utiliser de preference en debut/milieu de contrat pour encaisser l'aleatoire.",
+        "Ne pas vider le paquet sans raison: la duree des chasses suivantes peut augmenter."
+      ],
+      referenceRows: [
+        { label: "The Sun (5%)", effect: "Sanite du tireur remise a 100%", risk: "Aucun malus direct" },
+        { label: "The Moon (5%)", effect: "Sanite du tireur tombee a 0%", risk: "Fenetre de chasse immediate" },
+        { label: "The Tower (20%)", effect: "Activite de l'entite x2 pendant 20 s", risk: "Plus d'evenements donc plus d'exposition" },
+        { label: "Wheel of Fortune (20%)", effect: "+25% ou -25% de sanite", risk: "Resultat rouge punitif" },
+        { label: "The Devil (10%)", effect: "Force un evenement paranormal", risk: "Pression locale plus forte" },
+        { label: "Death (10%)", effect: "Declenche une chasse maudite", risk: "Danger maximal immediat" },
+        { label: "The Hermit (10%)", effect: "Renvoie l'entite en piece favorite 1 min", risk: "Chasses/evenements restent possibles" },
+        { label: "High Priestess (2%)", effect: "Resurrection d'un mort (ou prochain mort)", risk: "Tres rare, ne doit pas etre attendu" },
+        { label: "Hanged Man (1%)", effect: "Mort instantanee du tireur", risk: "Elimination directe" },
+        { label: "The Fool (17%)", effect: "Aucun effet", risk: "Perte d'une carte; 100% pendant chasse" }
+      ]
+    },
+    {
+      name: "Miroir hante",
+      difficulty: "Moyenne",
+      sanityCost: "7.5%/s, minimum 20% meme en coup d'oeil court",
+      huntRisk: "Eleve si la sanite tombe trop bas",
+      usageLimit: "Jusqu'a bris du miroir",
+      summary: "Scanner visuel de piece favorite. Tres rapide pour localiser, mais le drain de sanite est brutal si tu le gardes ouvert trop longtemps.",
+      usage: [
+        "Activer le miroir en main et lire la vue de la piece favorite.",
+        "Couper l'utilisation rapidement (clic droit ou poser l'objet).",
+        "Revenir plus tard si un second check est necessaire."
+      ],
+      risks: [
+        "Drains lourds de sanite en continu pendant l'observation.",
+        "Sous-seuil de sanite: le miroir se brise et declenche une chasse maudite.",
+        "Usage trop long en debut de partie peut accelerer toute la phase de danger."
+      ],
+      tips: [
+        "Faire une lecture courte puis quitter la piece pour confirmer au thermometre.",
+        "Toujours laisser une marge de sanite avant un second usage.",
+        "Associer le miroir a une equipe prete a poser vite les outils de preuve."
+      ],
+      referenceRows: [
+        { label: "Lecture principale", effect: "Affiche la piece favorite de l'entite", risk: "7.5% de sanite perdue par seconde" },
+        { label: "Coup d'oeil rapide", effect: "Info immediate sans long maintien", risk: "Plancher a 20% de perte de sanite" },
+        { label: "Rupture de sanite", effect: "Le miroir se casse", risk: "Chasse maudite immediate" }
+      ]
+    },
+    {
+      name: "Boite a musique",
+      difficulty: "Elevee",
+      sanityCost: "De 0% a 77% selon distance/temps (env. 2.6%/s sous 3 m)",
+      huntRisk: "Tres eleve a moins de 5 m du fantome",
+      usageLimit: "Single run puis inutilisable",
+      summary: "Objet d'attraction sonore: force l'entite a chanter et peut la faire venir, mais transforme vite l'essai en chasse maudite si mal distance.",
+      usage: [
+        "Activer la boite en main puis la poser pour travailler a distance.",
+        "Observer d'ou vient le chant pour resserrer la zone de recherche.",
+        "Couper avant de tomber a court de sanite."
+      ],
+      risks: [
+        "Approcher la boite active a moins de 5 m du fantome le fait apparaitre et marcher vers elle.",
+        "Boite jetee pendant usage ou sanite insuffisante: dong + chasse maudite.",
+        "Si le fantome atteint la boite au sol, chasse maudite apres une courte phase."
+      ],
+      tips: [
+        "Toujours la poser avant de s'approcher de la zone suspecte.",
+        "L'utiliser avec une sortie de fuite deja ouverte dans la tete.",
+        "Tres utile sur cartes complexes pour orienter la premiere pose d'outils."
+      ],
+      referenceRows: [
+        { label: "Activation", effect: "Diffuse une melodie et force le chant du fantome", risk: "Perte de sanite pour les joueurs a portee" },
+        { label: "Proximite < 5 m", effect: "Le fantome se revele et se dirige vers la boite", risk: "Escalade rapide vers chasse maudite" },
+        { label: "Fin brutale", effect: "Boite inutilisable", risk: "Declenchement de chasse maudite" }
+      ]
+    },
+    {
+      name: "Cercle d'invocation",
+      difficulty: "Elevee",
+      sanityCost: "16% par bougie allumee",
+      huntRisk: "Certain: chasse maudite en fin d'invocation",
+      usageLimit: "Utilisable une seule fois",
+      summary: "Invocation controlee pour photo/identification rapide. Ultra rentable en equipe prete, mais extremement punitive sans plan de sortie.",
+      usage: [
+        "Allumer les 5 bougies avec une source de feu.",
+        "Profiter des 5 secondes de materialisation pour photo/test court.",
+        "Decrocher immediatement avant le debut de la chasse maudite."
+      ],
+      risks: [
+        "Toutes les portes exterieures se verrouillent a l'activation complete.",
+        "Si la derniere bougie est allumee en chasse active, teleport du fantome au cercle.",
+        "Bougie allumee avec moins de 16% de sanite: invocation peut partir quasi instant."
+      ],
+      tips: [
+        "Poser encens et cache avant d'allumer la 5e bougie.",
+        "Utiliser en fin de phase de preuve quand l'equipe est prete a encaisser une chasse.",
+        "Eviter toute activation si un joueur est deja en panique/sanite basse."
+      ],
+      referenceRows: [
+        { label: "Bougie 1 a 5", effect: "Progression de l'invocation", risk: "-16% de sanite par bougie et par joueur proche" },
+        { label: "Phase d'apparition", effect: "Fantome visible et immobile ~5 s", risk: "Fenetre courte, portes deja verrouillees" },
+        { label: "Fin de phase", effect: "Debut de chasse maudite sans delai", risk: "Risque de wipe sans plan de fuite" }
+      ]
+    },
+    {
+      name: "Poupee vaudou",
+      difficulty: "Moyenne",
+      sanityCost: "5% par epingle normale, 10% sur le coeur",
+      huntRisk: "Moyen a tres eleve selon epingle active",
+      usageLimit: "10 epingles max",
+      summary: "Outil de forcing d'interaction: excellent pour provoquer ecriture/DOTS/portes, mais dependant de la sanite et de l'epingle tiree.",
+      usage: [
+        "Activer la poupee pour enfoncer une epingle aleatoire.",
+        "Observer l'interaction forcee et verifier les preuves dans la zone.",
+        "Arreter avant depletion de sanite pour eviter l'enfoncement global."
+      ],
+      risks: [
+        "Epingle coeur: chasse maudite immediate.",
+        "Sanite insuffisante: toutes les epingles s'enfoncent et chasse maudite garantie.",
+        "Objet inutilisable une fois les 10 epingles enfoncees."
+      ],
+      tips: [
+        "Tres utile juste apres avoir trouve la piece pour accelerer les preuves passives.",
+        "Ne pas chain spam en solo: la sanite tombe trop vite.",
+        "Toujours garder encens a portee avant les derniers essais."
+      ],
+      referenceRows: [
+        { label: "Epingle normale", effect: "Force une interaction du fantome", risk: "Perte de 5% de sanite" },
+        { label: "Epingle coeur", effect: "Reaction agressive immediate", risk: "Perte de 10% + chasse maudite" },
+        { label: "Sanite insuffisante", effect: "Enfoncement total des epingles", risk: "Chasse maudite certaine" }
+      ]
+    },
+    {
+      name: "Patte de singe",
+      difficulty: "Tres elevee",
+      sanityCost: "Variable selon voeu (peut inclure gros malus)",
+      huntRisk: "De moyen a critique selon le voeu",
+      usageLimit: "3 a 5 voeux selon multiplicateur de partie",
+      summary: "Objet maudit a fort levier strategique: offre des effets majeurs (resurrection, info, meteo, fuite), mais chaque voeu impose une contrepartie lourde.",
+      usage: [
+        "Tenir la patte et formuler un voeu valide.",
+        "Verifier immediatement l'effet obtenu puis le malus applique.",
+        "Planifier les voeux restants: un meme voeu ne peut pas etre repete."
+      ],
+      risks: [
+        "Peut lancer une chasse maudite immediate ou differree selon le voeu.",
+        "Peut imposer perte severe de sanite, handicap visuel/audio ou mort directe.",
+        "Le nombre de voeux baisse avec le multiplicateur de difficulte."
+      ],
+      tips: [
+        "Garder les voeux critiques (fuite, resurrection) pour les moments de crise.",
+        "Eviter les voeux agressifs sans setup defensif deja en place.",
+        "En equipe, designer un seul porteur pour suivre les contreparties."
+      ],
+      referenceRows: [
+        { label: "Quota de voeux", effect: "<2.00: 5 voeux / 2.00-2.99: 4 / >=3.00: 3", risk: "Moins de marge en difficulte elevee" },
+        { label: "Je souhaite voir le fantome", effect: "Apparition 5 s, facile a photographier", risk: "Chasse maudite juste apres + vision reduite du porteur" },
+        { label: "Je souhaite etre sain d'esprit", effect: "Tout le monde passe a 50% de sanite", risk: "Drain passif augmente et changement de piece favorite" },
+        { label: "Je souhaite partir", effect: "Portes exterieures deverrouillees meme en chasse", risk: "Ralentissement extreme du porteur pendant quelques secondes" },
+        { label: "Je souhaite ressusciter un ami", effect: "Ranime un joueur mort", risk: "50% de chance de mort immediate du porteur" },
+        { label: "Je souhaite la connaissance", effect: "Retire une preuve du journal", risk: "Teleport proche + chasse maudite + handicaps sensoriels" }
+      ]
+    }
+  ],
   mechanics: {
     ghostCore: {
       activation: "L'entite est vraiment active apres ouverture de la porte de sortie principale.",
@@ -592,6 +804,13 @@ window.PHASMO_DATA = {
     "Preuve _ Wiki Phasmophobia _ Fandom.html",
     "Carte _ Wiki Phasmophobia _ Fandom.html",
     "Sante mentale _ Wiki Phasmophobia _ Fandom.html",
-    "Unofficial Phasmophobia Cheat Sheet.html"
+    "Unofficial Phasmophobia Cheat Sheet.html",
+    "Équipement Planche Ouija - Phasmophobia FR.html",
+    "La boîte à musique - Phasmophobia FR.html",
+    "Le cercle d'invocation - Phasmophobia FR.html",
+    "Le miroir hanté - Phasmophobia FR.html",
+    "Les cartes de tarot - Phasmophobia FR.html",
+    "Les poupées vaudou maudites - Phasmophobia FR.html",
+    "Patte de singe - Phasmophobia FR.html"
   ]
 };
