@@ -4,6 +4,107 @@ import vm from "node:vm";
 
 const SITE_BASE = "https://julien.github.io/phasmo-wiki";
 const root = process.cwd();
+const PAGE_IMAGES = {
+  ghosts: {
+    Banshee: [
+      { src: "assets/images/ghosts/banshee.png", alt: "Banshee en manifestation" }
+    ],
+    Cauchemar: [
+      { src: "assets/images/ghosts/cauchemar.jpg", alt: "Cauchemar en manifestation" }
+    ],
+    Demon: [
+      { src: "assets/images/ghosts/demon.jpg", alt: "Demon en manifestation" }
+    ],
+    Deogen: [
+      { src: "assets/images/ghosts/deogen.png", alt: "Deogen en manifestation" }
+    ],
+    Djinn: [
+      { src: "assets/images/ghosts/djinn.png", alt: "Djinn en manifestation" }
+    ],
+    Esprit: [
+      { src: "assets/images/ghosts/esprit.png", alt: "Esprit en manifestation" }
+    ],
+    Fantome: [
+      { src: "assets/images/ghosts/fantome.jpg", alt: "Fantome en manifestation (capture 1)" },
+      { src: "assets/images/ghosts/fantome-alt.jpg", alt: "Fantome en manifestation (capture 2)" }
+    ],
+    Goryo: [
+      { src: "assets/images/ghosts/goryo.png", alt: "Goryo en manifestation" }
+    ],
+    Hantu: [
+      { src: "assets/images/ghosts/hantu.jpg", alt: "Hantu en manifestation" }
+    ],
+    "Le Mimic": [
+      { src: "assets/images/ghosts/le-mimic.png", alt: "Le Mimic en manifestation" }
+    ],
+    "Les Jumeaux": [
+      { src: "assets/images/ghosts/les-jumeaux.png", alt: "Les Jumeaux en manifestation" }
+    ],
+    Moroi: [
+      { src: "assets/images/ghosts/moroi.png", alt: "Moroi en manifestation" }
+    ],
+    Myling: [
+      { src: "assets/images/ghosts/myling.png", alt: "Myling en manifestation" }
+    ],
+    Obake: [
+      { src: "assets/images/ghosts/obake.png", alt: "Obake en manifestation" }
+    ],
+    Ombre: [
+      { src: "assets/images/ghosts/ombre.jpg", alt: "Ombre en manifestation" }
+    ],
+    Oni: [
+      { src: "assets/images/ghosts/oni.jpg", alt: "Oni en manifestation" }
+    ],
+    Onryo: [
+      { src: "assets/images/ghosts/onryo.png", alt: "Onryo en manifestation" }
+    ],
+    Poltergeist: [
+      { src: "assets/images/ghosts/poltergeist.jpg", alt: "Poltergeist en manifestation" }
+    ],
+    Raiju: [
+      { src: "assets/images/ghosts/raiju.png", alt: "Raiju en manifestation" }
+    ],
+    Revenant: [
+      { src: "assets/images/ghosts/revenant.jpg", alt: "Revenant en manifestation" }
+    ],
+    Spectre: [
+      { src: "assets/images/ghosts/spectre.png", alt: "Spectre en manifestation" }
+    ],
+    Thaye: [
+      { src: "assets/images/ghosts/thaye.png", alt: "Thaye en manifestation" }
+    ],
+    Yokai: [
+      { src: "assets/images/ghosts/yokai.jpg", alt: "Yokai en manifestation" }
+    ],
+    Yurei: [
+      { src: "assets/images/ghosts/yurei.png", alt: "Yurei en manifestation" }
+    ]
+  },
+  maps: {
+    "6 Tanglewood Drive": [
+      { src: "assets/images/maps/tanglewood.png", alt: "Plan de 6 Tanglewood Drive" },
+      { src: "assets/images/maps/tanglewood-alt.png", alt: "Plan alternatif de 6 Tanglewood Drive" }
+    ],
+    "Brownstone High School": [
+      { src: "assets/images/maps/brownstone-high-school.png", alt: "Plan de Brownstone High School" }
+    ],
+    "Sunny Meadows": [
+      { src: "assets/images/maps/sunny-meadows.png", alt: "Plan de Sunny Meadows Mental Institution" }
+    ]
+  },
+  equipment: {
+    "Projecteur D.O.T.S.": [
+      { src: "assets/images/equipment/dots-t1.jpeg", alt: "Projecteur D.O.T.S. Tier I" },
+      { src: "assets/images/equipment/dots-t2.jpeg", alt: "Projecteur D.O.T.S. Tier II" },
+      { src: "assets/images/equipment/dots-t3.jpeg", alt: "Projecteur D.O.T.S. Tier III" }
+    ],
+    "Lecteur EMF": [
+      { src: "assets/images/equipment/emf-t1.jpeg", alt: "Lecteur EMF Tier I" },
+      { src: "assets/images/equipment/emf-t2.jpeg", alt: "Lecteur EMF Tier II" }
+    ]
+  },
+  cursed: {}
+};
 
 function readData() {
   const source = fs.readFileSync(path.join(root, "assets/js/data.js"), "utf8");
@@ -175,6 +276,27 @@ function imageSourceCredit() {
   return '<p class="image-credit">Source image: <a href="https://www.phasmophobia-fr.com/wiki-phasmophobia-fr/" rel="noopener noreferrer">https://www.phasmophobia-fr.com/wiki-phasmophobia-fr/</a></p>';
 }
 
+function imageSet(category, key) {
+  const bucket = PAGE_IMAGES[category] || {};
+  return bucket[key] || [];
+}
+
+function renderImageSlot({ images, prefix, fallbackTitle, fallbackHint }) {
+  if (!images || images.length === 0) {
+    return `<div class="image-slot">${escapeHtml(fallbackTitle)}<br>(${escapeHtml(fallbackHint)})</div>`;
+  }
+
+  const gallery = images
+    .map(
+      (image) =>
+        `<figure class="image-figure"><img src="${prefix}${escapeHtml(image.src)}" alt="${escapeHtml(image.alt)}" loading="lazy" decoding="async"></figure>`
+    )
+    .join("");
+
+  const multi = images.length > 1 ? " image-slot-multi" : "";
+  return `<div class="image-slot image-slot-filled${multi}">${gallery}</div>`;
+}
+
 function mergeItemData(data) {
   const items = new Map();
 
@@ -274,6 +396,7 @@ function buildGhostPages(data) {
     const tests = (ghost.tests || [])
       .map((test) => `<li>${escapeHtml(test)}</li>`)
       .join("");
+    const ghostImages = imageSet("ghosts", ghost.name);
 
     const content = `
     <section class="detail-page">
@@ -287,7 +410,12 @@ function buildGhostPages(data) {
       <section class="detail-grid">
         <article class="card">
           <h2>Visuel du fantome</h2>
-          <div class="image-slot">Zone image prevue pour ${escapeHtml(ghost.name)}<br>(illustration / modele en jeu)</div>
+          ${renderImageSlot({
+            images: ghostImages,
+            prefix: "../../",
+            fallbackTitle: `Zone image prevue pour ${ghost.name}`,
+            fallbackHint: "illustration / modele en jeu"
+          })}
           ${imageSourceCredit()}
           <p class="detail-note">Ajoute ici une capture en manifestation ou une image de modele pour reconnaissance rapide.</p>
         </article>
@@ -444,6 +572,7 @@ function buildItemPages(data) {
           .map((name) => `<a class="badge" href="../../../phantomes/${slugify(name)}/">${escapeHtml(name)}</a>`)
           .join("")
       : '<span class="badge">Aucun lien direct fantome/preuve</span>';
+    const itemImages = imageSet("equipment", item.name);
 
     const content = `
     <section class="detail-page">
@@ -457,7 +586,12 @@ function buildItemPages(data) {
       <section class="detail-grid">
         <article class="card">
           <h2>Visuel de l'objet</h2>
-          <div class="image-slot">Zone image prevue pour ${escapeHtml(item.name)}<br>(objet en inventaire / rendu en jeu)</div>
+          ${renderImageSlot({
+            images: itemImages,
+            prefix: "../../../",
+            fallbackTitle: `Zone image prevue pour ${item.name}`,
+            fallbackHint: "objet en inventaire / rendu en jeu"
+          })}
           ${imageSourceCredit()}
           <p class="detail-note">Ajoute une capture de l'objet en main + pose dans la piece hantee.</p>
         </article>
@@ -543,6 +677,7 @@ function buildMapPages(data) {
     const segmentationHtml = segmentationNotes.length
       ? segmentationNotes.map((note) => `<li>${escapeHtml(note)}</li>`).join("")
       : "<li>Pas de decoupage particulier mentionne dans la synthese locale.</li>";
+    const mapImages = imageSet("maps", mapName);
 
     const content = `
     <section class="detail-page">
@@ -559,7 +694,12 @@ function buildMapPages(data) {
       <section class="detail-grid">
         <article class="card">
           <h2>Plan de la carte</h2>
-          <div class="image-slot">Zone image prevue pour ${escapeHtml(mapName)}<br>(plan complet / callouts de zones)</div>
+          ${renderImageSlot({
+            images: mapImages,
+            prefix: "../../",
+            fallbackTitle: `Zone image prevue pour ${mapName}`,
+            fallbackHint: "plan complet / callouts de zones"
+          })}
           ${imageSourceCredit()}
           <p class="detail-note">Ajoute un plan annote (spawn, caches, chemins de fuite, zones de test).</p>
         </article>
@@ -657,6 +797,7 @@ function buildCursedPages(data) {
         </table>
       </div>`
       : '<p class="detail-note">Aucun tableau avance supplementaire dans la source locale pour cet objet.</p>';
+    const cursedImages = imageSet("cursed", item.name);
 
     const content = `
     <section class="detail-page">
@@ -675,7 +816,12 @@ function buildCursedPages(data) {
       <section class="detail-grid">
         <article class="card">
           <h2>Visuel de l'objet maudit</h2>
-          <div class="image-slot">Zone image prevue pour ${escapeHtml(item.name)}<br>(objet maudit en jeu / vue inventaire)</div>
+          ${renderImageSlot({
+            images: cursedImages,
+            prefix: "../../",
+            fallbackTitle: `Zone image prevue pour ${item.name}`,
+            fallbackHint: "objet maudit en jeu / vue inventaire"
+          })}
           ${imageSourceCredit()}
           <p class="detail-note">Ajoute une image claire de l'objet pose + tenue en main pour reconnaissance immediate.</p>
         </article>
