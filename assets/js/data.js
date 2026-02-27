@@ -243,6 +243,35 @@ window.PHASMO_DATA = {
       tests: ["Observer portes qui claquent sans autre cause", "Utiliser encens pour limiter son roaming"]
     }
   ],
+  ghostStats: {
+    "Banshee": { hunt: "50% (sanite de la cible)", speed: "1.7 m/s", los: "LOS standard", interfere: "10 m", nerd: "Ciblage mono-joueur; cris parabolique distinctifs." },
+    "Cauchemar": { hunt: "60% obscurite / 40% lumiere", speed: "1.7 m/s", los: "LOS standard", interfere: "10 m", nerd: "Coupe la lumiere; n'allume jamais les interrupteurs." },
+    "Dayan": { hunt: "45-65% selon mouvement proche", speed: "1.2-2.25 m/s", los: "Variable", interfere: "10 m", nerd: "Vitesse liee au mouvement des joueurs proches." },
+    "Demon": { hunt: "70% (100% via capacite rare)", speed: "1.7 m/s", los: "LOS standard", interfere: "10 m", nerd: "Fenetre de chasse tres agressive; crucifix plus efficace." },
+    "Deogen": { hunt: "40%", speed: "0.4-3.0 m/s", los: "Toujours lock cible", interfere: "10 m", nerd: "Accelere a distance, ralentit fortement au contact." },
+    "Djinn": { hunt: "50%", speed: "1.7 / 2.5 m/s", los: "Boost conditionnel", interfere: "10 m", nerd: "Boost vitesse si disjoncteur ON et cible lointaine." },
+    "Esprit": { hunt: "50%", speed: "1.7 m/s", los: "LOS standard", interfere: "10 m", nerd: "Encens bloque plus longtemps ses chasses." },
+    "Fantome": { hunt: "50%", speed: "1.7 m/s", los: "LOS standard", interfere: "10 m", nerd: "Photo en event pour disparition; drain sanite en pseudo LOS." },
+    "Gallu": { hunt: "40-60% selon etat", speed: "1.36-1.96 m/s", los: "Variable", interfere: "10 m", nerd: "Cycle d'etats modifiant vitesse et agressivite." },
+    "Goryo": { hunt: "50%", speed: "1.7 m/s", los: "LOS standard", interfere: "10 m", nerd: "DOTS visible surtout via camera; roaming limite." },
+    "Hantu": { hunt: "50%", speed: "1.4-2.7 m/s", los: "Pas de boost LOS", interfere: "10 m", nerd: "Dependance thermique forte; n'allume jamais le disjoncteur." },
+    "Le Mimic": { hunt: "Variable (copie)", speed: "Variable", los: "Variable", interfere: "10 m", nerd: "Faux orbes secondaires; reproduit d'autres profils." },
+    "Les Jumeaux": { hunt: "50%", speed: "1.53 / 1.87 m/s", los: "LOS standard", interfere: "10 m", nerd: "Double profil de vitesse + interactions decalees." },
+    "Moroi": { hunt: "50%", speed: "1.5-2.25 m/s", los: "LOS standard", interfere: "10 m", nerd: "Accelere avec baisse de sanite; malediction Spirit Box/parabolique." },
+    "Myling": { hunt: "50%", speed: "1.7 m/s", los: "LOS standard", interfere: "10 m", nerd: "Audible plus tard en chasse; sons paranormaux plus frequents." },
+    "Obake": { hunt: "50%", speed: "1.7 m/s", los: "LOS standard", interfere: "10 m", nerd: "Empreintes speciales et metamorphose furtive en chasse." },
+    "Obambo": { hunt: "Etat calme/agressif (variable)", speed: "Lent ↔ Rapide", los: "Variable", interfere: "10 m", nerd: "Bascules d'etat impactant seuil et duree de chasse." },
+    "Ombre": { hunt: "35%", speed: "1.7 m/s", los: "LOS standard", interfere: "10 m", nerd: "Interaction faible; evite la chasse avec joueurs proches." },
+    "Oni": { hunt: "50%", speed: "1.7 m/s", los: "LOS standard", interfere: "10 m", nerd: "Hyper-actif proche joueurs; pas d'event boule d'air." },
+    "Onryo": { hunt: "60% sans flamme", speed: "1.7 m/s", los: "LOS standard", interfere: "10 m", nerd: "Compteur d'extinction de flammes; flamme = anti-chasse local." },
+    "Poltergeist": { hunt: "50%", speed: "1.7 m/s", los: "LOS standard", interfere: "10 m", nerd: "Multi-lancer d'objets avec impact sanite." },
+    "Raiju": { hunt: "50% / 65% proche electronique", speed: "1.7-2.5 m/s", los: "LOS standard", interfere: "15 m", nerd: "Profite du materiel actif pendant la chasse." },
+    "Revenant": { hunt: "50%", speed: "1.0-3.0 m/s", los: "Boost extrême sur cible", interfere: "10 m", nerd: "Tres lent hors detection, tres rapide en lock." },
+    "Spectre": { hunt: "50%", speed: "1.7 m/s", los: "LOS standard", interfere: "10 m", nerd: "Teleports ponctuels; comportement atypique avec le sel." },
+    "Thaye": { hunt: "15-75% (vieillissement)", speed: "1.0-2.75 m/s", los: "LOS standard", interfere: "10 m", nerd: "Debut ultra agressif puis ralentissement progressif." },
+    "Yokai": { hunt: "50% / 80% en parlant", speed: "1.7 m/s", los: "Audition reduite", interfere: "10 m", nerd: "Voix des joueurs peut pousser le seuil de chasse." },
+    "Yurei": { hunt: "50%", speed: "1.7 m/s", los: "LOS standard", interfere: "10 m", nerd: "Drain sanite de zone + claquements de portes signatures." }
+  },
   equipment: {
     starter: [
       { name: "Projecteur D.O.T.S.", price: 65, max: 2, role: "Detection visuelle des silhouettes DOTS." },
