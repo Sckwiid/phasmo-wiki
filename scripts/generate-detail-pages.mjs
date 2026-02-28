@@ -81,15 +81,53 @@ const PAGE_IMAGES = {
     ]
   },
   maps: {
+    "10 Ridgeview Court": [
+      { src: "assets/images/maps/FR_Parent_Ridgeview.png", alt: "Plan de 10 Ridgeview Court" }
+    ],
+    "13 Willow Street": [
+      { src: "assets/images/maps/FR_Parent_Willow.png", alt: "Plan de 13 Willow Street" }
+    ],
+    "42 Edgefield Road": [
+      { src: "assets/images/maps/FR_Parent_Edgefield-1.png", alt: "Plan de 42 Edgefield Road" }
+    ],
     "6 Tanglewood Drive": [
       { src: "assets/images/maps/tanglewood.png", alt: "Plan de 6 Tanglewood Drive" },
       { src: "assets/images/maps/tanglewood-alt.png", alt: "Plan alternatif de 6 Tanglewood Drive" }
     ],
+    "Bleasdale Farmhouse": [
+      { src: "assets/images/maps/bleasdale_newMapFR.png", alt: "Plan de Bleasdale Farmhouse" }
+    ],
     "Brownstone High School": [
-      { src: "assets/images/maps/brownstone-high-school.png", alt: "Plan de Brownstone High School" }
+      { src: "assets/images/maps/FR_Parent_Brownstone_High_School-scaled.png", alt: "Plan de Brownstone High School" }
+    ],
+    "Camp Woodwind": [
+      { src: "assets/images/maps/Woodwind_PhasmoFR.png", alt: "Plan de Camp Woodwind" }
+    ],
+    "Grafton Farmhouse": [
+      { src: "assets/images/maps/Map_grafton_new_fr.png", alt: "Plan de Grafton Farmhouse" }
+    ],
+    "Maple Lodge Campsite": [
+      { src: "assets/images/maps/FR_Parent_Maple_Lodge.png", alt: "Plan de Maple Lodge Campsite" }
+    ],
+    "Nell's Diner": [
+      { src: "assets/images/maps/FR_Parent_Nells_DinerPhasmo.png", alt: "Plan de Nell's Diner" }
+    ],
+    "Point Hope": [
+      { src: "assets/images/maps/FR_Parent_Point_Hope.png", alt: "Plan de Point Hope" }
+    ],
+    Prison: [
+      { src: "assets/images/maps/FR_Parent_Prison.png", alt: "Plan de Prison" },
+      { src: "assets/images/maps/FR_Parent_Prison-scaled.png", alt: "Plan de Prison (scaled)" }
     ],
     "Sunny Meadows": [
-      { src: "assets/images/maps/sunny-meadows.png", alt: "Plan de Sunny Meadows Mental Institution" }
+      { src: "assets/images/maps/sunnymeadows-scaled.png", alt: "Plan de Sunny Meadows Mental Institution" }
+    ],
+    "Sunny Meadows Restricted": [
+      { src: "assets/images/maps/FR_Parent_Restricted_SM_Courtyard.png", alt: "Plan Sunny Meadows Restricted - Courtyard" },
+      { src: "assets/images/maps/FR_Parent_Restricted_SM_Female.png", alt: "Plan Sunny Meadows Restricted - Female Wing" },
+      { src: "assets/images/maps/FR_Parent_Restricted_SM_Hospital.png", alt: "Plan Sunny Meadows Restricted - Hospital Wing" },
+      { src: "assets/images/maps/FR_Parent_Restricted_SM_Male.png", alt: "Plan Sunny Meadows Restricted - Male Wing" },
+      { src: "assets/images/maps/FR_Parent_Restricted_SM_Restricted.png", alt: "Plan Sunny Meadows Restricted - Full View" }
     ]
   },
   equipment: {
@@ -100,7 +138,8 @@ const PAGE_IMAGES = {
     ],
     "Lecteur EMF": [
       { src: "assets/images/equipment/emf-t1.jpeg", alt: "Lecteur EMF Tier I" },
-      { src: "assets/images/equipment/emf-t2.jpeg", alt: "Lecteur EMF Tier II" }
+      { src: "assets/images/equipment/emf-t2.jpeg", alt: "Lecteur EMF Tier II" },
+      { src: "assets/images/equipment/EMF-Tier-3-By-Phasmo-FR.jpeg", alt: "Lecteur EMF Tier III" }
     ]
   },
   cursed: {}
