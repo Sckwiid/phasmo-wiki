@@ -328,6 +328,26 @@ img {
   color: #e2e8f9;
 }
 
+.badge a {
+  color: #aafaf3;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  font-weight: 600;
+}
+
+.badge a:hover {
+  color: #ffffff;
+}
+
+.tool-link {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.tool-link:hover {
+  color: #ffffff;
+}
+
 .kpi-grid,
 .grid {
   display: grid;
@@ -482,6 +502,21 @@ input[type="search"] {
 }
 
 input[type="search"]:focus {
+  outline: 2px solid rgba(77, 224, 196, 0.45);
+  outline-offset: 2px;
+}
+
+select {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 11px 13px;
+  color: var(--text);
+  font-size: 0.96rem;
+}
+
+select:focus {
   outline: 2px solid rgba(77, 224, 196, 0.45);
   outline-offset: 2px;
 }
@@ -890,11 +925,65 @@ li a:hover {
 
 .hub-ghosts { --hub-rgb: 114, 92, 188; }
 .hub-evidence { --hub-rgb: 66, 142, 176; }
+.hub-zero { --hub-rgb: 88, 166, 214; }
 .hub-gear { --hub-rgb: 172, 114, 64; }
 .hub-maps { --hub-rgb: 56, 148, 101; }
 .hub-mechanics { --hub-rgb: 161, 76, 109; }
 .hub-guide { --hub-rgb: 79, 113, 196; }
 .hub-cursed { --hub-rgb: 186, 90, 62; }
+
+.zp-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 10px;
+}
+
+.zp-field {
+  display: grid;
+  gap: 6px;
+}
+
+.zp-field label {
+  font-size: 0.86rem;
+  color: #dce4fa;
+}
+
+.zp-tags {
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.zp-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.zp-final {
+  border: 1px solid rgba(var(--theme-a-rgb), 0.5);
+  border-radius: 12px;
+  padding: 12px;
+  background: linear-gradient(
+    145deg,
+    rgba(var(--theme-a-rgb), 0.24),
+    rgba(var(--theme-b-rgb), 0.1)
+  );
+}
+
+.zp-candidates {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 12px;
+}
+
+.zp-mini {
+  font-size: 0.88rem;
+  color: #d2dcf5;
+}
 
 .detail-page {
   display: grid;
