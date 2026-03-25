@@ -68,10 +68,17 @@
         <h2>Questionnaire express</h2>
         <p id="zp-count" class="badge">0 entite</p>
       </div>
+      <p class="zp-mini">
+        Debutant: remplis 1 ou 2 champs maximum (pas tout d'un coup), puis regarde la short-list.
+        Les <strong>?</strong> expliquent comment tester chaque point en mission.
+      </p>
       <form id="zp-form" class="filters">
         <div class="zp-grid">
           <div class="zp-field">
-            <label for="zp-hunt">Seuil de chasse observe</label>
+            <label for="zp-hunt">
+              Seuil de chasse observe
+              <span class="info-tip" tabindex="0" data-tip="Regarde la sanite moyenne du camion quand la premiere chasse commence. En general: <=40% = tres tot, ~50% = standard, >=60% = haut/conditionnel.">?</span>
+            </label>
             <select id="zp-hunt" name="hunt">
               <option value="">Inconnu</option>
               <option value="low">Tres tot (<= 40%)</option>
@@ -80,7 +87,10 @@
             </select>
           </div>
           <div class="zp-field">
-            <label for="zp-speed">Profil de vitesse</label>
+            <label for="zp-speed">
+              Profil de vitesse
+              <span class="info-tip" tabindex="0" data-tip="Pendant la chasse, ecoute les pas: lente = facile a distancer, rapide = te rattrape vite. Si la vitesse change beaucoup selon la situation, choisis 'Tres variable'.">?</span>
+            </label>
             <select id="zp-speed" name="speed">
               <option value="">Inconnu</option>
               <option value="slow">Lente possible</option>
@@ -90,7 +100,10 @@
             </select>
           </div>
           <div class="zp-field">
-            <label for="zp-los">Comportement LOS</label>
+            <label for="zp-los">
+              Comportement LOS
+              <span class="info-tip" tabindex="0" data-tip="LOS = ligne de vue. Si le fantome accelere quand il te voit, choisis 'Boost/conditionnel'. Si la vitesse bouge peu en vue directe, choisis 'Standard' ou 'Pas de boost LOS'.">?</span>
+            </label>
             <select id="zp-los" name="los">
               <option value="">Inconnu</option>
               <option value="standard">LOS standard</option>
@@ -100,7 +113,10 @@
             </select>
           </div>
           <div class="zp-field">
-            <label for="zp-interfere">Interferences electroniques</label>
+            <label for="zp-interfere">
+              Interferences electroniques
+              <span class="info-tip" tabindex="0" data-tip="Observe a quelle distance lampe/radio/equipements grisent en chasse. En general ~10 m. Un rayon plus large (~15 m) peut orienter vers Raiju avec electroniques proches.">?</span>
+            </label>
             <select id="zp-interfere" name="interfere">
               <option value="">Inconnu</option>
               <option value="10">~10 m</option>
@@ -110,7 +126,10 @@
         </div>
 
         <div class="zp-field">
-          <label for="zp-query">Mot-cle comportement</label>
+          <label for="zp-query">
+            Mot-cle comportement
+            <span class="info-tip" tabindex="0" data-tip="Entre un mot lie a ce que tu vois: 'bougie', 'disjoncteur', 'teleport', 'encens', 'sel', 'parabolique'. Utilise un seul mot simple pour commencer.">?</span>
+          </label>
           <input id="zp-query" type="search" placeholder="Ex: bougie, disjoncteur, teleport, encens..." autocomplete="off">
         </div>
 
